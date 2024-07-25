@@ -1,3 +1,3 @@
 import 'package:flutter/material.dart';
 
-const Color rootPink = Color(0xEC33FF);
+const Color rootPink = Color.fromARGB(255, 196, 30, 233);

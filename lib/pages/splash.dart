@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rocket_auth/pages/login.dart';
+import 'package:rocket_auth/utilities/colors.dart';
 
 class Splash extends StatelessWidget {
   const Splash({super.key});
@@ -6,22 +8,35 @@ class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: SizedBox(
+        width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
-              onPressed: () {},
-              child: Text("hello"),
-            ),
             Container(
-              height: 600,
-              child: Image.asset("assets/splash.svg"),
+              margin: EdgeInsets.symmetric(vertical: 180),
+              height: 360,
+              child: Image.asset("assets/splash_screen.png"),
             ),
             ElevatedButton(
-              onPressed: () {},
-              child: Text("hello"),
-            )
+              style: ElevatedButton.styleFrom(
+                backgroundColor: rootPink,
+                minimumSize: Size(220, 40),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return Login();
+                    },
+                  ),
+                );
+              },
+              child: Text("Proceed ..."),
+            ),
           ],
         ),
       ),

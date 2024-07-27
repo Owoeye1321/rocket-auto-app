@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rocket_auth/widgets/input_field.dart';
 
 import '../utilities/colors.dart';
 
@@ -31,53 +32,22 @@ class _LoginState extends State<Login> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  height: 50,
-                  margin: EdgeInsets.symmetric(
-                    vertical: 5,
-                  ),
-                  child: TextFormField(
-                    textAlign: TextAlign.left,
-                    decoration: InputDecoration(
-                      contentPadding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-                      hintText: "******@gmail.com",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(
-                            100.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Container(
-                  height: 50,
-                  margin: EdgeInsets.fromLTRB(0, 10, 0, 40),
-                  child: TextFormField(
-                    obscureText: show_password,
-                    textAlign: TextAlign.left,
-                    decoration: InputDecoration(
-                      suffixIcon: IconButton(
-                        onPressed: togglePasswordVisibility,
-                        icon: Icon(show_password
-                            ? Icons.visibility
-                            : Icons.visibility_off),
-                      ),
-                      contentPadding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-                      hintText: "********",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(
-                            100.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                InputField(
+                    hintText: "**********@gmail.com",
+                    verticalPadding: 10,
+                    horizontalPadding: 16,
+                    marginLeft: 0,
+                    marginRight: 0,
+                    marginTop: 5,
+                    marginBottom: 5),
+                InputField(
+                    hintText: "********",
+                    verticalPadding: 10,
+                    horizontalPadding: 15,
+                    marginBottom: 40,
+                    marginLeft: 0,
+                    marginRight: 0,
+                    marginTop: 10),
                 Container(
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(

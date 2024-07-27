@@ -88,7 +88,10 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     onPressed: () {},
-                    child: Text("Login"),
+                    child: Text(
+                      "Login",
+                      style: TextStyle(color: Colors.white, fontSize: 19),
+                    ),
                   ),
                 ),
               ],

@@ -36,7 +36,10 @@ class Splash extends StatelessWidget {
                   ),
                 );
               },
-              child: Text("Proceed ..."),
+              child: Text(
+                "Proceed ...",
+                style: TextStyle(fontSize: 15),
+              ),
             ),
           ],
         ),

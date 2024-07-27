@@ -21,12 +21,13 @@ class Splash extends StatelessWidget {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: rootPink,
-                minimumSize: Size(220, 40),
+                minimumSize: Size(200, 40),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
               ),
               onPressed: () {
+                print("hello world");
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) {

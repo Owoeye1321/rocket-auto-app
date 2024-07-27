@@ -10,6 +10,14 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  bool show_password = true;
+
+  togglePasswordVisibility() {
+    setState(() {
+      show_password = !show_password;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +40,7 @@ class _LoginState extends State<Login> {
                     textAlign: TextAlign.left,
                     decoration: InputDecoration(
                       contentPadding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 6),
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 16),
                       hintText: "******@gmail.com",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
@@ -48,10 +56,17 @@ class _LoginState extends State<Login> {
                   height: 50,
                   margin: EdgeInsets.fromLTRB(0, 10, 0, 40),
                   child: TextFormField(
+                    obscureText: show_password,
                     textAlign: TextAlign.left,
                     decoration: InputDecoration(
+                      suffixIcon: IconButton(
+                        onPressed: togglePasswordVisibility,
+                        icon: Icon(show_password
+                            ? Icons.visibility
+                            : Icons.visibility_off),
+                      ),
                       contentPadding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 6),
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 16),
                       hintText: "********",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(

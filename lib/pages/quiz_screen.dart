@@ -1,14 +1,14 @@
 import "package:flutter/material.dart";
 
-class QuizScreen extends StatefulWidget {
-  QuizScreen({super.key});
+class QuestionScreen extends StatefulWidget {
+  QuestionScreen({super.key});
   @override
-  State<QuizScreen> createState() {
-    return _QuizeScreen();
+  State<QuestionScreen> createState() {
+    return _QuestionScreen();
   }
 }
 
-class _QuizeScreen extends State<QuizScreen> {
+class _QuestionScreen extends State<QuestionScreen> {
   @override
   Widget build(context) {
     return Text("Hello world");

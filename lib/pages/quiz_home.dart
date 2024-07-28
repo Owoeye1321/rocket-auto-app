@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:rocket_auth/utilities/colors.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class Quiz extends StatefulWidget {
+  Quiz({super.key});
+  @override
+  State<Quiz> createState() {
+    return QuizeState();
+  }
+}
+
+class QuizeState extends State<Quiz> {
+  QuizeState();
   @override
   Widget build(context) {
     return Scaffold(

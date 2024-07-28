@@ -67,7 +67,7 @@ class _LoginState extends State<Login> {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) {
-                            return HomePage();
+                            return Quiz();
                           },
                         ),
                       );

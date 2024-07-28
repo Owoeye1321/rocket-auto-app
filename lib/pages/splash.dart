@@ -16,7 +16,10 @@ class Splash extends StatelessWidget {
             Container(
               margin: EdgeInsets.symmetric(vertical: 180),
               height: 360,
-              child: Image.asset("assets/splash_screen.png"),
+              child: Opacity(
+                opacity: 0.8,
+                child: Image.asset("assets/splash_screen.png"),
+              ),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(

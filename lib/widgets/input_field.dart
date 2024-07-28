@@ -63,7 +63,7 @@ class _InputField extends State<InputField> {
       margin:
           EdgeInsets.fromLTRB(marginLeft, marginTop, marginRight, marginBottom),
       child: TextFormField(
-        obscureText: disableState,
+        obscureText: hideTextInput ? disableState : false,
         textAlign: TextAlign.left,
         decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(

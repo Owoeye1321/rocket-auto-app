@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rocket_auth/widgets/toggle_password_visibility.dart';
 
-class InputField extends StatelessWidget {
+class InputField extends StatefulWidget {
   final String hintText;
   final double verticalPadding;
   final double horizontalPadding;
@@ -23,13 +22,48 @@ class InputField extends StatelessWidget {
       required this.alterVisibility,
       required this.hideTextInput});
   @override
+  State<InputField> createState() {
+    return _InputField(hintText, verticalPadding, horizontalPadding, marginLeft,
+        marginTop, marginRight, marginBottom, alterVisibility, hideTextInput);
+  }
+}
+
+class _InputField extends State<InputField> {
+  final String hintText;
+  final double verticalPadding;
+  final double horizontalPadding;
+  final double marginLeft;
+  final double marginTop;
+  final double marginRight;
+  final double marginBottom;
+  final bool alterVisibility;
+  final bool hideTextInput;
+
+  _InputField(
+      this.hintText,
+      this.verticalPadding,
+      this.horizontalPadding,
+      this.marginLeft,
+      this.marginRight,
+      this.marginTop,
+      this.marginBottom,
+      this.alterVisibility,
+      this.hideTextInput);
+
+  // this section does the toggle password visibility
+  bool disableState = true;
+  void toggleVisibility() {
+    setState(() => {disableState = !disableState});
+  }
+
+  @override
   Widget build(context) {
     return Container(
       height: 50,
       margin:
           EdgeInsets.fromLTRB(marginLeft, marginTop, marginRight, marginBottom),
       child: TextFormField(
-        obscureText: hideTextInput,
+        obscureText: disableState,
         textAlign: TextAlign.left,
         decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(
@@ -42,7 +76,13 @@ class InputField extends StatelessWidget {
                 ),
               ),
             ),
-            suffixIcon: alterVisibility ? TogglePasswordVisibility() : null),
+            suffixIcon: alterVisibility
+                ? IconButton(
+                    onPressed: toggleVisibility,
+                    icon: Icon(
+                        disableState ? Icons.visibility : Icons.visibility_off),
+                  )
+                : null),
       ),
     );
   }

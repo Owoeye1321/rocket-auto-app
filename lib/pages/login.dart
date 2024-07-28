@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rocket_auth/pages/quiz_home.dart';
 import 'package:rocket_auth/widgets/input_field.dart';
 import 'package:rocket_auth/utilities/colors.dart';
 
@@ -62,7 +63,15 @@ class _LoginState extends State<Login> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return HomePage();
+                          },
+                        ),
+                      );
+                    },
                     child: Text(
                       "Login",
                       style: TextStyle(color: Colors.white, fontSize: 19),

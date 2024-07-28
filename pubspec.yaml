@@ -69,7 +69,7 @@ flutter:
   assets:
     - "assets/launcher.png"
     - "assets/splash_screen.png"
-  #   - images/a_dot_ham.jpeg
+    - "assets/quiz_image.png"
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

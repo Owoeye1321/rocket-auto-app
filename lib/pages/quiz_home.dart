@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rocket_auth/pages/quiz_intro_screen.dart';
+import 'package:rocket_auth/pages/quiz_screen.dart';
 import 'package:rocket_auth/utilities/colors.dart';
 
 class Quiz extends StatefulWidget {
@@ -10,7 +12,21 @@ class Quiz extends StatefulWidget {
 }
 
 class QuizeState extends State<Quiz> {
-  QuizeState();
+  Widget? activeScreen;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    activeScreen = StartScreen(switchScreen);
+  }
+
+  void switchScreen() {
+    setState(() {
+      activeScreen = QuestionScreen();
+    });
+  }
+
   @override
   Widget build(context) {
     return Scaffold(
@@ -23,29 +39,7 @@ class QuizeState extends State<Quiz> {
         ),
         width: double.infinity,
         padding: EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image.asset(
-              "assets/quiz_image.png",
-              width: 300,
-              //color: Color.fromARGB(100, 255, 255, 255),
-            ),
-            SizedBox(height: 50),
-            OutlinedButton.icon(
-              style: OutlinedButton.styleFrom(
-                foregroundColor: Colors.white,
-              ),
-              icon: Icon(Icons.arrow_right_alt),
-              onPressed: () {},
-              label: Text(
-                "Take Quiz",
-                style: TextStyle(color: Colors.white, fontSize: 18),
-              ),
-            )
-          ],
-        ),
+        child: activeScreen,
       ),
     );
   }

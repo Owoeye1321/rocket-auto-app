@@ -23,33 +23,11 @@ class InputField extends StatefulWidget {
       required this.hideTextInput});
   @override
   State<InputField> createState() {
-    return _InputField(hintText, verticalPadding, horizontalPadding, marginLeft,
-        marginTop, marginRight, marginBottom, alterVisibility, hideTextInput);
+    return _InputField();
   }
 }
 
 class _InputField extends State<InputField> {
-  final String hintText;
-  final double verticalPadding;
-  final double horizontalPadding;
-  final double marginLeft;
-  final double marginTop;
-  final double marginRight;
-  final double marginBottom;
-  final bool alterVisibility;
-  final bool hideTextInput;
-
-  _InputField(
-      this.hintText,
-      this.verticalPadding,
-      this.horizontalPadding,
-      this.marginLeft,
-      this.marginRight,
-      this.marginTop,
-      this.marginBottom,
-      this.alterVisibility,
-      this.hideTextInput);
-
   // this section does the toggle password visibility
   bool disableState = true;
   void toggleVisibility() {
@@ -60,15 +38,16 @@ class _InputField extends State<InputField> {
   Widget build(context) {
     return Container(
       height: 50,
-      margin:
-          EdgeInsets.fromLTRB(marginLeft, marginTop, marginRight, marginBottom),
+      margin: EdgeInsets.fromLTRB(widget.marginLeft, widget.marginTop,
+          widget.marginRight, widget.marginBottom),
       child: TextFormField(
-        obscureText: hideTextInput ? disableState : false,
+        obscureText: widget.hideTextInput ? disableState : false,
         textAlign: TextAlign.left,
         decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(
-                vertical: verticalPadding, horizontal: horizontalPadding),
-            hintText: hintText,
+                vertical: widget.verticalPadding,
+                horizontal: widget.horizontalPadding),
+            hintText: widget.hintText,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(
@@ -76,7 +55,7 @@ class _InputField extends State<InputField> {
                 ),
               ),
             ),
-            suffixIcon: alterVisibility
+            suffixIcon: widget.alterVisibility
                 ? IconButton(
                     onPressed: toggleVisibility,
                     icon: Icon(

@@ -1,9 +1,11 @@
 import "package:flutter/material.dart";
 import "package:rocket_auth/widgets/answer_button.dart";
 import 'package:rocket_auth/data/questions.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class QuestionScreen extends StatefulWidget {
-  QuestionScreen({super.key});
+  final void Function(String answer) onSelectedAnswer;
+  QuestionScreen({super.key, required this.onSelectedAnswer});
   @override
   State<QuestionScreen> createState() {
     return _QuestionScreenState();
@@ -13,14 +15,15 @@ class QuestionScreen extends StatefulWidget {
 class _QuestionScreenState extends State<QuestionScreen> {
   var currentIndex = 0;
   // var currentQuestion;
-  @override
   // void initState() {
   //   // TODO: implement initState
   //   super.initState();
   //   currentQuestion = question[currentIndex];
   // }
 
-  void onHandleButton() {
+  void onHandleButton(String answer) {
+    widget.onSelectedAnswer(answer);
+    print("hello wrodld");
     setState(() {
       currentIndex++;
     });
@@ -35,13 +38,16 @@ class _QuestionScreenState extends State<QuestionScreen> {
       children: [
         Text(
           currentQuestion.text,
-          style: TextStyle(color: Colors.white, fontSize: 22),
+          style: GoogleFonts.lato(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22),
           textAlign: TextAlign.center,
         ),
         SizedBox(height: 30),
         ...currentQuestion.getShuffledAnswers().map(
           (item) {
-            return AnswerButton(onHandleButton, item);
+            return AnswerButton(() {
+              onHandleButton(item);
+            }, item);
           },
         ),
       ],

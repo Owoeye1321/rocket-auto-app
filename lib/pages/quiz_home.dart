@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rocket_auth/data/questions.dart';
 import 'package:rocket_auth/pages/quiz_intro_screen.dart';
 import 'package:rocket_auth/pages/quiz_screen.dart';
 import 'package:rocket_auth/utilities/colors.dart';
@@ -14,6 +15,7 @@ class Quiz extends StatefulWidget {
 class QuizeState extends State<Quiz> {
   //Widget? activeScreen;
   var activeScreen = 'start-screen';
+  final List<String> selectedAnswers = [];
 
   @override
   // void initState() {
@@ -27,6 +29,16 @@ class QuizeState extends State<Quiz> {
       // activeScreen = QuestionScreen();
       activeScreen = 'question-screen';
     });
+  }
+
+  void chooseAnswers(String answwer) {
+    selectedAnswers..add(answwer);
+
+    if (selectedAnswers.length == question.length) {
+      setState(() {
+        activeScreen = 'start-screen';
+      });
+    }
   }
 
   @override
@@ -43,7 +55,9 @@ class QuizeState extends State<Quiz> {
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: activeScreen == 'start-screen'
             ? StartScreen(switchScreen)
-            : QuestionScreen(),
+            : QuestionScreen(
+                onSelectedAnswer: chooseAnswers,
+              ),
       ),
     );
   }

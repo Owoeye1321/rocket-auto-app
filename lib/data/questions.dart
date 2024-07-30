@@ -1,4 +1,4 @@
-import 'package:rocket_auth/models/quiz_questions.dart';
+import 'package:rocket_auth/models/quiz_model.dart';
 
 const question = [
   const QuizQuestions("What are the main building blocks of flutter UI ?",

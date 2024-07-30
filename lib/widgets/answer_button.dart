@@ -12,8 +12,9 @@ class AnswerButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onHandleButton,
         child: Text(
-          "Answer one",
+          buttonText,
           style: TextStyle(fontSize: 15),
+          textAlign: TextAlign.center,
         ),
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.fromLTRB(20, 4, 20, 4),

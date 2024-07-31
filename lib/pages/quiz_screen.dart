@@ -23,7 +23,6 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   void onHandleButton(String answer) {
     widget.onSelectedAnswer(answer);
-    print("hello wrodld");
     setState(() {
       currentIndex++;
     });
@@ -46,6 +45,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
         ...currentQuestion.getShuffledAnswers().map(
           (item) {
             return AnswerButton(() {
+              print("hello wrodld");
               onHandleButton(item);
             }, item);
           },

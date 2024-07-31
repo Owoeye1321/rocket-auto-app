@@ -1,5 +1,3 @@
-import 'package:rocket_auth/data/questions.dart';
-
 class QuizQuestions {
   final String text;
   final List<String> answers;

@@ -2,11 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rocket_auth/data/questions.dart';
+import 'package:rocket_auth/models/quiz_model.dart';
 
 import '../utilities/colors.dart';
 
 class ResultScreen extends StatelessWidget {
-  const ResultScreen({super.key});
+  final List<String> choosenAnswers;
+  const ResultScreen(this.choosenAnswers, {super.key});
+
+  List<Map<String, Object>> getSummary() {
+    final List<Map<String, Object>> summary = [];
+    QuizQuestions currentItem;
+    for (var i = 0; i < choosenAnswers.length; i++) {
+     // summary.add({question[i].text, choosenAnswers[i]})
+    }
+    return summary;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +43,9 @@ class ResultScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.center,
+            ),
+            SizedBox(
+              height: 30,
             )
           ],
         ));

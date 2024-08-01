@@ -40,11 +40,11 @@ class QuizeState extends State<Quiz> {
     if (selectedAnswers.length == question.length) {
       setState(() {
         //  activeScreen = 'start-screen';
-        activeScreen = StartScreen(switchScreen);
+        //activeScreen = StartScreen(switchScreen);
+        activeScreen = ResultScreen(selectedAnswers);
         selectedAnswers = [];
       });
       //activeScreen = "result-screen";
-      activeScreen = ResultScreen();
     }
   }
 

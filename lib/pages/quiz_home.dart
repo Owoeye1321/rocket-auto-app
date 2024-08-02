@@ -35,7 +35,7 @@ class QuizeState extends State<Quiz> {
   }
 
   void chooseAnswers(String answwer) {
-    selectedAnswers..add(answwer);
+    selectedAnswers.add(answwer);
 
     if (selectedAnswers.length == question.length) {
       setState(() {

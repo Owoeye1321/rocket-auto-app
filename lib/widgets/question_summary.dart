@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class QuestionSummary extends StatelessWidget {
   final List<Map<String, Object>> questionSummary;
@@ -7,20 +8,39 @@ class QuestionSummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        ...questionSummary.map((each) {
-          return Container(
-            height: 50,
-            margin: EdgeInsets.only(bottom: 20),
-            padding: EdgeInsets.all(10),
-            //color: Colors.green,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Text("hello world"),
-          );
-        })
-      ],
-    );
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: questionSummary.map(
+          (each) {
+            return Row(
+              children: [
+                Text(
+                  ((each["question_index"] as int) + 1).toString(),
+                  style: GoogleFonts.merriweather(
+                    height: 3,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Text(
+                        (each["question"]).toString(),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        (each["correct_answer"]).toString(),
+                      ),
+                      Text(
+                        (each["chosen_answer"]).toString(),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            );
+          },
+        ).toList());
   }
 }

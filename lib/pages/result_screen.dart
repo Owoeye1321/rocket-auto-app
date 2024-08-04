@@ -20,7 +20,7 @@ class ResultScreen extends StatelessWidget {
     for (var i = 0; i < choosenAnswers.length; i++) {
       summary.add({
         "question_index": i,
-        "question": question[1],
+        "question": question[i],
         "correct_answer": question[i].answers[0],
         "chosen_answer": choosenAnswers[i],
       });

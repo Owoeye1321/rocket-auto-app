@@ -12,11 +12,13 @@ import '../utilities/colors.dart';
 
 class ResultScreen extends StatelessWidget {
   final List<String> choosenAnswers;
-  const ResultScreen(this.choosenAnswers, {super.key});
-
+  ResultScreen(this.choosenAnswers, {super.key});
+  int score = 0;
+  int total_question = question.length;
   List<Map<String, Object>> getSummary() {
     final List<Map<String, Object>> summary = [];
     QuizQuestions currentItem;
+
     for (var i = 0; i < choosenAnswers.length; i++) {
       summary.add({
         "question_index": i,
@@ -30,6 +32,10 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final summaryData = getSummary();
+    final totalCorrectAnswer = summaryData.where((each) {
+      return true;
+    });
     return Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -44,7 +50,7 @@ class ResultScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "You answered X out of Y questions bla bla bla bla bla bla",
+              "You answered $score out of $total_question questions bla bla bla bla bla bla",
               style: GoogleFonts.gupter(
                 color: Colors.white,
                 fontSize: 23,
@@ -55,7 +61,7 @@ class ResultScreen extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            QuestionSummary(getSummary()),
+            QuestionSummary(summaryData),
             SizedBox(height: 25),
             OutlinedButton.icon(
               style: OutlinedButton.styleFrom(

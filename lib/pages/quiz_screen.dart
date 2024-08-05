@@ -15,11 +15,10 @@ class QuestionScreen extends StatefulWidget {
 class _QuestionScreenState extends State<QuestionScreen> {
   var currentIndex = 0;
   // var currentQuestion;
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   currentQuestion = question[currentIndex];
-  // }
+  void initState() {
+    super.initState();
+    // currentQuestion = question[currentIndex];
+  }
 
   void onHandleButton(String answer) {
     widget.onSelectedAnswer(answer);

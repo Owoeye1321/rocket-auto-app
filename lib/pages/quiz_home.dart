@@ -20,7 +20,6 @@ class QuizeState extends State<Quiz> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     activeScreen = StartScreen(switchScreen);
   }

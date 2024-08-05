@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rocket_auth/data/questions.dart';
-import 'package:rocket_auth/main.dart';
-import 'package:rocket_auth/models/quiz_model.dart';
-import 'package:rocket_auth/pages/quiz_home.dart';
 import 'package:rocket_auth/widgets/question_summary.dart';
 
 import '../utilities/colors.dart';
@@ -13,11 +8,10 @@ import '../utilities/colors.dart';
 class ResultScreen extends StatelessWidget {
   final List<String> choosenAnswers;
   ResultScreen(this.choosenAnswers, {super.key});
-  int score = 0;
-  int total_question = question.length;
+  final int total_question = question.length;
+
   List<Map<String, Object>> getSummary() {
     final List<Map<String, Object>> summary = [];
-    QuizQuestions currentItem;
 
     for (var i = 0; i < choosenAnswers.length; i++) {
       summary.add({
@@ -25,6 +19,7 @@ class ResultScreen extends StatelessWidget {
         "question": question[i],
         "correct_answer": question[i].answers[0],
         "chosen_answer": choosenAnswers[i],
+        "status": choosenAnswers[i] == question[i].answers[0] ? true : false
       });
     }
     return summary;
@@ -34,8 +29,8 @@ class ResultScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final summaryData = getSummary();
     final totalCorrectAnswer = summaryData.where((each) {
-      return true;
-    });
+      return each["chosen_answer"] == each["correct_answer"];
+    }).length;
     return Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -50,7 +45,7 @@ class ResultScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "You answered $score out of $total_question questions bla bla bla bla bla bla",
+              "You answered $totalCorrectAnswer out of $total_question questions bla bla bla bla bla bla",
               style: GoogleFonts.gupter(
                 color: Colors.white,
                 fontSize: 23,

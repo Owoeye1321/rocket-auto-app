@@ -7,7 +7,8 @@ import '../utilities/colors.dart';
 
 class ResultScreen extends StatelessWidget {
   final List<String> choosenAnswers;
-  ResultScreen(this.choosenAnswers, {super.key});
+  final Function() switchScreen;
+  ResultScreen(this.choosenAnswers, this.switchScreen, {super.key});
   final int total_question = question.length;
 
   List<Map<String, Object>> getSummary() {
@@ -16,7 +17,7 @@ class ResultScreen extends StatelessWidget {
     for (var i = 0; i < choosenAnswers.length; i++) {
       summary.add({
         "question_index": i,
-        "question": question[i],
+        "question": question[i].text,
         "correct_answer": question[i].answers[0],
         "chosen_answer": choosenAnswers[i],
         "status": choosenAnswers[i] == question[i].answers[0] ? true : false
@@ -62,14 +63,8 @@ class ResultScreen extends StatelessWidget {
               style: OutlinedButton.styleFrom(
                 foregroundColor: Colors.white,
               ),
-              icon: Icon(Icons.arrow_right_alt),
-              onPressed: () {
-                // Navigator.of(context).push(
-                //   MaterialPageRoute(builder: (context) {
-                //     return Quiz();
-                //   }),
-                // );
-              },
+              icon: Icon(Icons.restart_alt_outlined),
+              onPressed: switchScreen,
               label: Text(
                 "Restart ",
                 style: TextStyle(color: Colors.white, fontSize: 14),

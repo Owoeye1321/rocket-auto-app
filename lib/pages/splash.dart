@@ -17,7 +17,7 @@ class Splash extends StatelessWidget {
               margin: EdgeInsets.symmetric(vertical: 180),
               height: 360,
               child: Opacity(
-                opacity: 0.8,
+                opacity: 1,
                 child: Image.asset("assets/splash_screen.png"),
               ),
             ),

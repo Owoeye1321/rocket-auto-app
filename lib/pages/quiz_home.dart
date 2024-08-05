@@ -40,7 +40,7 @@ class QuizeState extends State<Quiz> {
       setState(() {
         //  activeScreen = 'start-screen';
         //activeScreen = StartScreen(switchScreen);
-        activeScreen = ResultScreen(selectedAnswers);
+        activeScreen = ResultScreen(selectedAnswers, switchScreen);
         selectedAnswers = [];
       });
       //activeScreen = "result-screen";

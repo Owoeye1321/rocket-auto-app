@@ -7,7 +7,6 @@ class QuestionSummary extends StatelessWidget {
   QuestionSummary(this.questionSummary, {super.key});
   @override
   Widget build(BuildContext context) {
-    print(questionSummary);
     return SizedBox(
       height: 280,
       width: double.infinity,
@@ -21,8 +20,10 @@ class QuestionSummary extends StatelessWidget {
                   children: [
                     Container(
                       width: 30,
-                      padding: EdgeInsets.only(bottom: 10),
-                      margin: EdgeInsets.only(right: 25),
+                      height: 30,
+                      margin: EdgeInsets.only(
+                        right: 15,
+                      ),
                       decoration: BoxDecoration(
                         color: each["status"] == true
                             ? Colors.lightBlue
@@ -37,6 +38,9 @@ class QuestionSummary extends StatelessWidget {
                           height: 3,
                           fontWeight: FontWeight.bold,
                           //backgroundColor: ,
+                          textStyle: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              height: double.infinity),
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -56,10 +60,7 @@ class QuestionSummary extends StatelessWidget {
                           ),
                           Text(
                             (each["correct_answer"]).toString(),
-                            style: TextStyle(
-                                color: each["status"] == true
-                                    ? Colors.lightBlue
-                                    : wrongAnswerColor),
+                            style: TextStyle(color: Colors.lightBlue),
                           ),
                           Text(
                             (each["chosen_answer"]).toString(),
@@ -70,7 +71,8 @@ class QuestionSummary extends StatelessWidget {
                           )
                         ],
                       ),
-                    )
+                    ),
+                    SizedBox(height: 10)
                   ],
                 );
               },

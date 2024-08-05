@@ -19,30 +19,30 @@ class QuestionSummary extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      width: 30,
+                      width: 28,
                       height: 30,
-                      margin: EdgeInsets.only(
-                        right: 15,
-                      ),
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.only(right: 10, bottom: 30),
+                      padding: EdgeInsets.only(bottom: 5),
                       decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black, width: 1),
                         color: each["status"] == true
                             ? Colors.lightBlue
                             : wrongAnswerColor,
                         borderRadius: BorderRadius.all(
-                          Radius.circular(50),
+                          Radius.circular(60),
                         ),
                       ),
-                      child: Text(
-                        ((each["question_index"] as int) + 1).toString(),
-                        style: GoogleFonts.merriweather(
-                          height: 3,
-                          fontWeight: FontWeight.bold,
-                          //backgroundColor: ,
-                          textStyle: TextStyle(
+                      child: Center(
+                        child: Text(
+                          ((each["question_index"] as int) + 1).toString(),
+                          style: GoogleFonts.merriweather(
+                            textStyle: TextStyle(
                               fontWeight: FontWeight.bold,
-                              height: double.infinity),
+                            ),
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
                       ),
                     ),
                     Expanded(

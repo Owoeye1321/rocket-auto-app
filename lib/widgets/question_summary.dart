@@ -23,9 +23,7 @@ class QuestionSummary extends StatelessWidget {
                       height: 30,
                       alignment: Alignment.center,
                       margin: EdgeInsets.only(right: 10, bottom: 30),
-                      padding: EdgeInsets.only(bottom: 5),
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black, width: 1),
                         color: each["status"] == true
                             ? Colors.lightBlue
                             : wrongAnswerColor,

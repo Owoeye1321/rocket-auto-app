@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rocket_auth/data/questions.dart';
+import 'package:rocket_auth/pages/expense.dart';
 import 'package:rocket_auth/widgets/question_summary.dart';
 
 import '../utilities/colors.dart';
@@ -67,6 +68,25 @@ class ResultScreen extends StatelessWidget {
               onPressed: switchScreen,
               label: Text(
                 "Restart ",
+                style: TextStyle(color: Colors.white, fontSize: 14),
+              ),
+            ),
+            OutlinedButton.icon(
+              style: OutlinedButton.styleFrom(
+                foregroundColor: Colors.white,
+              ),
+              icon: Icon(Icons.track_changes_outlined),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return Expense();
+                    },
+                  ),
+                );
+              },
+              label: Text(
+                "Expense Tracker ",
                 style: TextStyle(color: Colors.white, fontSize: 14),
               ),
             )

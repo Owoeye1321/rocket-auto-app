@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rocket_auth/data/questions.dart';
-import 'package:rocket_auth/pages/expense.dart';
 import 'package:rocket_auth/widgets/question_summary.dart';
-
+import 'package:rocket_auth/pages/expenses.dart';
 import '../utilities/colors.dart';
 
 class ResultScreen extends StatelessWidget {
@@ -80,7 +79,7 @@ class ResultScreen extends StatelessWidget {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) {
-                      return Expense();
+                      return Expenses();
                     },
                   ),
                 );

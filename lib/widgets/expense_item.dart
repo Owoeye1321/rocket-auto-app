@@ -9,7 +9,17 @@ class ExpenseItem extends StatelessWidget {
   @override
   Widget build(context) {
     return Card(
-      child: Text(expenseItem.title),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        child: Column(
+          children: [
+            Text(expenseItem.title),
+            Row(
+              children: [Text('\$${expenseItem.amount.toStringAsFixed(2)}')],
+            )
+          ],
+        ),
+      ),
     );
   }
 }

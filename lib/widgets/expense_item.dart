@@ -22,8 +22,7 @@ class ExpenseItem extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    //Text(expenseItem.category.name),
-                    Icon(Icons.alarm),
+                    Icon(categoryIcons[expenseItem.category]),
                     SizedBox(width: 8),
                     Text(expenseItem.formattedDate),
                   ],

@@ -32,9 +32,27 @@ class _Expenses extends State<Expenses> {
         category: Category.travel,
         date: DateTime.now()),
   ];
+
+  void _openAddExpenseOverlay() {
+    //wahala is done here
+    showModalBottomSheet(
+      context: context,
+      builder: (ctx) => Container(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Flutter Expense Tracker"),
+        actions: [
+          IconButton(
+            onPressed: _openAddExpenseOverlay,
+            icon: Icon(Icons.add),
+          ),
+        ],
+      ),
       body: Column(children: [
         Text("Hello world"),
         Expanded(

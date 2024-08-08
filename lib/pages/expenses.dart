@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rocket_auth/widgets/expenses_list.dart';
 import '../models/expense_model.dart';
 
 class Expenses extends StatefulWidget {
@@ -36,6 +37,9 @@ class _Expenses extends State<Expenses> {
     return Scaffold(
       body: Column(children: [
         Text("Hello world"),
+        Expanded(
+          child: ExpensesList(expenses: _registeredExpense),
+        )
       ]),
     );
   }

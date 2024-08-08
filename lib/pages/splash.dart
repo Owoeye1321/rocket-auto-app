@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:rocket_auth/pages/login.dart';
 import 'package:rocket_auth/utilities/colors.dart';
 
+import 'expenses.dart';
+
 class Splash extends StatelessWidget {
   const Splash({super.key});
 
@@ -44,6 +46,28 @@ class Splash extends StatelessWidget {
                 style: TextStyle(fontSize: 15),
               ),
             ),
+            OutlinedButton.icon(
+              style: OutlinedButton.styleFrom(
+                  foregroundColor: rootPink,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  minimumSize: Size(200, 40)),
+              icon: Icon(Icons.track_changes_outlined),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return Expenses();
+                    },
+                  ),
+                );
+              },
+              label: Text(
+                "Expense Tracker ",
+                style: TextStyle(color: rootPink, fontSize: 14),
+              ),
+            )
           ],
         ),
       ),

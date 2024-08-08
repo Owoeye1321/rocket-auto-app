@@ -15,7 +15,20 @@ class ExpenseItem extends StatelessWidget {
           children: [
             Text(expenseItem.title),
             Row(
-              children: [Text('\$${expenseItem.amount.toStringAsFixed(2)}')],
+              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('\$${expenseItem.amount.toStringAsFixed(2)}'),
+                Spacer(), //this spacer could be used in place of the main axis alignment
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    //Text(expenseItem.category.name),
+                    Icon(Icons.alarm),
+                    SizedBox(width: 8),
+                    Text(expenseItem.formattedDate),
+                  ],
+                ),
+              ],
             )
           ],
         ),

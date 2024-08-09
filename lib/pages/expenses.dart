@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rocket_auth/widgets/expenses_list.dart';
+import 'package:rocket_auth/widgets/new_expense.dart';
 import '../models/expense_model.dart';
 
 class Expenses extends StatefulWidget {
@@ -37,7 +39,7 @@ class _Expenses extends State<Expenses> {
     //wahala is done here
     showModalBottomSheet(
       context: context,
-      builder: (ctx) => Container(),
+      builder: (ctx) => NewExpense(),
     );
   }
 

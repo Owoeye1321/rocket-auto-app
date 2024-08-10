@@ -45,21 +45,40 @@ class _NewExpense extends State<NewExpense> {
               // ),
             ),
           ),
-          TextField(
-            controller: _amountController,
-            keyboardType: TextInputType.number,
-            decoration: InputDecoration(
-              prefixText: '\$ ',
-              label: Text("Amount"),
-              // border: OutlineInputBorder(
-              //   borderRadius: BorderRadius.all(
-              //     Radius.circular(100.0),
-              //   ),
-              // ),
-            ),
-          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: TextField(
+                  controller: _amountController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    prefixText: '\$ ',
+                    label: Text("Amount"),
+                    // border: OutlineInputBorder(
+                    //   borderRadius: BorderRadius.all(
+                    //     Radius.circular(100.0),
+                    //   ),
+                    // ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text("Selected date"),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.calendar_month),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+          Row(
+            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextButton(
                 onPressed: () {

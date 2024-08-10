@@ -43,7 +43,7 @@ class Splash extends StatelessWidget {
               },
               child: Text(
                 "Proceed ...",
-                style: TextStyle(fontSize: 15),
+                style: TextStyle(fontSize: 15, color: Colors.white),
               ),
             ),
             OutlinedButton.icon(

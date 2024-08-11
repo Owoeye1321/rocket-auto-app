@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:rocket_auth/models/expense_model.dart';
 
 class NewExpense extends StatefulWidget {
   NewExpense({super.key});
@@ -19,6 +21,24 @@ class _NewExpense extends State<NewExpense> {
 
   final _titleInputController = TextEditingController();
   final _amountController = TextEditingController();
+  DateTime? selectedDate;
+
+  //show date picker
+
+  void _showDatePicker() async {
+    final currentDate = DateTime.now();
+    final firstDate =
+        DateTime(currentDate.year - 1, currentDate.month, currentDate.day);
+    final pickedDate = await showDatePicker(
+      context: context,
+      initialDate: currentDate,
+      firstDate: firstDate,
+      lastDate: currentDate,
+    );
+    setState(() {
+      selectedDate = pickedDate;
+    });
+  }
 
   // The following function is called when a widgets is about to be destroyed
   @override
@@ -66,10 +86,13 @@ class _NewExpense extends State<NewExpense> {
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text("Selected date"),
+                    Text(selectedDate != null
+                        ? DateFormat.yMEd().format(selectedDate!)
+                        : "No date seleted"),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: _showDatePicker,
                       icon: Icon(Icons.calendar_month),
                     ),
                   ],
@@ -80,6 +103,17 @@ class _NewExpense extends State<NewExpense> {
           Row(
             //mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              DropdownButton(
+                items: Category.values
+                    .map(
+                      (item) => DropdownMenuItem(
+                        value: item,
+                        child: Text(item.name.toString()),
+                      ),
+                    )
+                    .toList(),
+                onChanged: (value) {},
+              ),
               TextButton(
                 onPressed: () {
                   //The element below accept a context and disable the modal

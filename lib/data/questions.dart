@@ -14,3 +14,5 @@ const question = [
   const QuizQuestions("What is your favoutite hairstyle?",
       ["Afro Galax", "Dreadlocks", "Skin", "Low cut"])
 ];
+
+

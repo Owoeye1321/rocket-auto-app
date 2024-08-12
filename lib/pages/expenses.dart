@@ -39,8 +39,14 @@ class _Expenses extends State<Expenses> {
     //wahala is done here
     showModalBottomSheet(
       context: context,
-      builder: (ctx) => NewExpense(),
+      builder: (ctx) => NewExpense(_addExpense),
     );
+  }
+
+  void _addExpense(Expense expense) {
+    setState(() {
+      _registeredExpense.add(expense);
+    });
   }
 
   @override

@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:rocket_auth/data/expenses.dart';
 import 'package:rocket_auth/models/expense_model.dart';
 
 class NewExpense extends StatefulWidget {
-  NewExpense({super.key});
+  final Function(Expense expense) onAddExpense;
+  NewExpense(
+    this.onAddExpense, {
+    super.key,
+  });
 
   @override
   State<NewExpense> createState() {
@@ -22,6 +27,7 @@ class _NewExpense extends State<NewExpense> {
   final _titleInputController = TextEditingController();
   final _amountController = TextEditingController();
   DateTime? selectedDate;
+  Category? _selectedCategory = Category.food;
 
   //show date picker
 
@@ -38,6 +44,39 @@ class _NewExpense extends State<NewExpense> {
     setState(() {
       selectedDate = pickedDate;
     });
+  }
+
+  void _submitExpenseData() {
+    final _enteredAmount = double.tryParse(_amountController.text);
+    final _amountIsInvalid = _enteredAmount == null || _enteredAmount < 1;
+    if (_titleInputController.text.trim().isEmpty ||
+        _amountIsInvalid ||
+        selectedDate == null) {
+      //Error is displayed here
+      showDialog(
+        context: context,
+        builder: (cxt) => AlertDialog(
+          title: Text("Invalid inputs"),
+          content: Text("Invalid details, kindly provide valid credentials"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(cxt);
+              },
+              child: Text("Okay"),
+            )
+          ],
+        ),
+      );
+      return;
+    }
+
+    widget.onAddExpense(Expense(
+      title: _titleInputController.text,
+      amount: _enteredAmount,
+      date: selectedDate!,
+      category: _selectedCategory!,
+    ));
   }
 
   // The following function is called when a widgets is about to be destroyed
@@ -100,20 +139,27 @@ class _NewExpense extends State<NewExpense> {
               )
             ],
           ),
+          SizedBox(height: 20),
           Row(
             //mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               DropdownButton(
+                value: _selectedCategory,
                 items: Category.values
                     .map(
                       (item) => DropdownMenuItem(
                         value: item,
-                        child: Text(item.name.toString()),
+                        child: Text(item.name.toUpperCase()),
                       ),
                     )
                     .toList(),
-                onChanged: (value) {},
+                onChanged: (value) {
+                  setState(() {
+                    _selectedCategory = value;
+                  });
+                },
               ),
+              Spacer(),
               TextButton(
                 onPressed: () {
                   //The element below accept a context and disable the modal
@@ -122,7 +168,7 @@ class _NewExpense extends State<NewExpense> {
                 child: Text("Cancle"),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: _submitExpenseData,
                 child: Text("Add Expense"),
               )
             ],

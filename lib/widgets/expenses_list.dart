@@ -3,8 +3,9 @@ import 'package:rocket_auth/models/expense_model.dart';
 import 'package:rocket_auth/widgets/expense_item.dart';
 
 class ExpensesList extends StatelessWidget {
+  final Function(Expense expense) onRemoveExpense;
   final List<Expense> expenses;
-  ExpensesList({required this.expenses, super.key});
+  ExpensesList(this.onRemoveExpense, {required this.expenses, super.key});
   @override
   Widget build(BuildContext context) {
     //This list view is used because it's automatically scrollable
@@ -13,8 +14,11 @@ class ExpensesList extends StatelessWidget {
     //itemCount determine the amount of the widget that should be rendered
     return ListView.builder(
       itemCount: expenses.length,
-      itemBuilder: (context, index) =>
-          ExpenseItem(expenseItem: expenses[index]),
+      itemBuilder: (context, index) => Dismissible(
+        key: ValueKey(expenses[index]),
+        onDismissed: (direction) => onRemoveExpense(expenses[index]),
+        child: ExpenseItem(expenseItem: expenses[index]),
+      ),
     );
   }
 }

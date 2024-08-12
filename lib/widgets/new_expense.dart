@@ -71,12 +71,15 @@ class _NewExpense extends State<NewExpense> {
       return;
     }
 
-    widget.onAddExpense(Expense(
-      title: _titleInputController.text,
-      amount: _enteredAmount,
-      date: selectedDate!,
-      category: _selectedCategory!,
-    ));
+    widget.onAddExpense(
+      Expense(
+        title: _titleInputController.text,
+        amount: _enteredAmount,
+        date: selectedDate!,
+        category: _selectedCategory!,
+      ),
+    );
+    Navigator.pop(context);
   }
 
   // The following function is called when a widgets is about to be destroyed

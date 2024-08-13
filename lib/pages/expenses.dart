@@ -50,9 +50,24 @@ class _Expenses extends State<Expenses> {
   }
 
   void _removeExpense(Expense expense) {
+    final _currentExpenseIndex = _registeredExpense.indexOf(expense);
     setState(() {
       _registeredExpense.remove(expense);
     });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: Duration(seconds: 3),
+        content: Text("Expense deleted"),
+        action: SnackBarAction(
+          label: "Undo",
+          onPressed: () {
+            setState(() {
+              _registeredExpense.insert(_currentExpenseIndex, expense);
+            });
+          },
+        ),
+      ),
+    );
   }
 
   @override
@@ -68,7 +83,6 @@ class _Expenses extends State<Expenses> {
         ],
       ),
       body: Column(children: [
-        Text("Hello world"),
         Expanded(
           child: ExpensesList(_removeExpense, expenses: _registeredExpense),
         )

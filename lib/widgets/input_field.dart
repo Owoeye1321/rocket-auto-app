@@ -40,7 +40,7 @@ class _InputField extends State<InputField> {
       height: 50,
       margin: EdgeInsets.fromLTRB(widget.marginLeft, widget.marginTop,
           widget.marginRight, widget.marginBottom),
-      child: TextFormField(
+      child: TextField(
         obscureText: widget.hideTextInput ? disableState : false,
         textAlign: TextAlign.left,
         decoration: InputDecoration(

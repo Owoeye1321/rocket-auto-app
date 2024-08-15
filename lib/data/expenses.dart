@@ -1,4 +1,4 @@
-import '../models/expense_model.dart';
+import 'package:rocket_auth/models/expense_model.dart';
 
 List<Expense> dummyRegisteredExpense = [
   Expense(

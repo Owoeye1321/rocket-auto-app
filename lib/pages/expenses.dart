@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rocket_auth/pages/chart/chart.dart';
 import 'package:rocket_auth/widgets/expenses_list.dart';
 import 'package:rocket_auth/widgets/new_expense.dart';
 import '../models/expense_model.dart';
@@ -83,6 +83,7 @@ class _Expenses extends State<Expenses> {
         ],
       ),
       body: Column(children: [
+        Chart(expenses: _registeredExpense),
         Expanded(
           child: ExpensesList(_removeExpense, expenses: _registeredExpense),
         )

@@ -15,6 +15,7 @@ class Home extends StatelessWidget {
     return MaterialApp(
       title: 'Rocket App',
       debugShowCheckedModeBanner: false,
+      darkTheme: ThemeData.dark().copyWith(colorScheme: kDarkColorScheme),
       theme: ThemeData(
               // This is the theme of your application.
               //
@@ -32,15 +33,17 @@ class Home extends StatelessWidget {
         useMaterial3: true,
         colorScheme: kColorScheme,
         cardTheme: CardTheme().copyWith(
-            color: kColorScheme.onSecondary,
-            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5)),
+          color: kColorScheme.background,
+          margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             foregroundColor: Colors.white,
-            backgroundColor: rootPink,
+            backgroundColor: kColorScheme.primary,
           ),
         ),
       ),
+      //themeMode: ThemeMode.system, //default mode activated
       home: const Splash(),
     );
   }

@@ -16,7 +16,7 @@ class Splash extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              margin: EdgeInsets.symmetric(vertical: 180),
+              margin: EdgeInsets.symmetric(vertical: 120),
               height: 360,
               child: Opacity(
                 opacity: 1,

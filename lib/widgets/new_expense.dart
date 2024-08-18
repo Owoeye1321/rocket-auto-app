@@ -111,7 +111,7 @@ class _NewExpense extends State<NewExpense> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
-                child: TextField(
+                child: TextField( 
                   controller: _amountController,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rocket_auth/pages/splash.dart';
 import 'package:rocket_auth/utilities/colors.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const Home());

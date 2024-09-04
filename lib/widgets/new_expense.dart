@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:rocket_auth/data/expenses.dart';
@@ -46,13 +49,24 @@ class _NewExpense extends State<NewExpense> {
     });
   }
 
-  void _submitExpenseData() {
-    final _enteredAmount = double.tryParse(_amountController.text);
-    final _amountIsInvalid = _enteredAmount == null || _enteredAmount < 1;
-    if (_titleInputController.text.trim().isEmpty ||
-        _amountIsInvalid ||
-        selectedDate == null) {
-      //Error is displayed here
+  void _showDialog() {
+    if (Platform.isIOS) {
+      showCupertinoDialog(
+        context: context,
+        builder: (ctx) => CupertinoAlertDialog(
+          title: Text("Invalid inputs"),
+          content: Text("Invalid details, kindly provide valid credentials"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(ctx);
+              },
+              child: Text("Okay"),
+            )
+          ],
+        ),
+      );
+    } else {
       showDialog(
         context: context,
         builder: (cxt) => AlertDialog(
@@ -68,6 +82,17 @@ class _NewExpense extends State<NewExpense> {
           ],
         ),
       );
+    }
+  }
+
+  void _submitExpenseData() {
+    final _enteredAmount = double.tryParse(_amountController.text);
+    final _amountIsInvalid = _enteredAmount == null || _enteredAmount < 1;
+    if (_titleInputController.text.trim().isEmpty ||
+        _amountIsInvalid ||
+        selectedDate == null) {
+      //Error is displayed here
+      _showDialog();
       return;
     }
 
@@ -111,7 +136,7 @@ class _NewExpense extends State<NewExpense> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
-                child: TextField( 
+                child: TextField(
                   controller: _amountController,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(

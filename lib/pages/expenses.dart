@@ -37,7 +37,7 @@ class _Expenses extends State<Expenses> {
 
   void _openAddExpenseOverlay() {
     //wahala is done here
-    showModalBottomSheet(
+    showModalBottomSheet(      
       context: context,
       builder: (ctx) => NewExpense(_addExpense),
     );

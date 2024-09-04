@@ -4,7 +4,9 @@ import 'package:rocket_auth/utilities/colors.dart';
 import 'package:flutter/services.dart';
 
 void main() {
-  runApp(const Home());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((fn) => {runApp(const Home())});
 }
 
 class Home extends StatelessWidget {
@@ -17,9 +19,7 @@ class Home extends StatelessWidget {
       title: 'Rocket App',
       debugShowCheckedModeBanner: false,
       darkTheme: ThemeData.dark().copyWith(colorScheme: kDarkColorScheme),
-      theme: ThemeData(
-              )
-          .copyWith(
+      theme: ThemeData().copyWith(
         useMaterial3: true,
         colorScheme: kColorScheme,
         cardTheme: CardTheme().copyWith(
